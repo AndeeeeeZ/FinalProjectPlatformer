@@ -1,0 +1,4 @@
+Goals: 
+- Use unity's new input system
+- Parallax background: both behind and in front
+- Platformer
