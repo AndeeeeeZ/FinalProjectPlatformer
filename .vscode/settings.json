@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "FinalProjectPlatformer.sln"
+    "dotnet.defaultSolution": "FinalProjectPlatformer.sln",
+    "dotnet.debug.suppressInvalidDebugTypeWarning": true
 }
