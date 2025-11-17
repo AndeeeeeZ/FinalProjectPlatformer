@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b7cdf9f228be0438c046c464f5546f, type: 3}
+  m_Name: Oxygen Tank
+  m_EditorClassIdentifier: 
+  OnLowOxygenLevel: {fileID: 0}
+  OnNoMoreOxygen: {fileID: 0}
+  OnOxygenLevelChange: {fileID: 11400000, guid: 9f63664c437630642aebb9acfd700c66, type: 2}
+  maxOxygenLevel: 100
+  currentOxygenLevel: 100
+  lowOxygenLevel: 20
