@@ -1,4 +1,6 @@
 Goals: 
-- Use unity's new input system
-- Parallax background: both behind and in front
-- Platformer
+- fish objects
+- AI that can be switched with enum or scriptable objects
+    - ex doesn't do anything when player get near
+    - attacks player
+    - runs from player

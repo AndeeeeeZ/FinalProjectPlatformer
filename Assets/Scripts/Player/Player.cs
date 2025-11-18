@@ -21,8 +21,8 @@ public class Player : MonoBehaviour
         timer += Time.deltaTime; 
         if (timer > second)
         {
-            timer -= second; 
-            oxygenTank.changeOxygenLevelBy(oxygenLostPerSecond.Value); 
+            timer = 0f; 
+            oxygenTank.ChangeOxygenLevelBy(oxygenLostPerSecond.Value); 
         }
     }
 

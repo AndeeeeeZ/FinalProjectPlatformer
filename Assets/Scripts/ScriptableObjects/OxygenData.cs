@@ -10,7 +10,7 @@ public class OxygenData : ScriptableObject
     public float currentOxygenLevel;
     public float lowOxygenLevel;
 
-    public void changeOxygenLevelBy(float n)
+    public void ChangeOxygenLevelBy(float n)
     {
         currentOxygenLevel += n;
         currentOxygenLevel = Mathf.Clamp(currentOxygenLevel, 0f, maxOxygenLevel);
@@ -34,4 +34,9 @@ public class OxygenData : ScriptableObject
             Debug.LogWarning("Oxygen level changed but OnOxygenLevelChange is not attached"); 
     }
 
+    public void ResetOxygenLevelToMax()
+    {
+        currentOxygenLevel = maxOxygenLevel; 
+        OnOxygenLevelChange?.Raise(); 
+    }
 }

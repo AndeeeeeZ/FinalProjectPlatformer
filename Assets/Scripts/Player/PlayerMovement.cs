@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private float horizontalMove;
     private int currentJumpAmount;
-    private bool grounded;
+    private PlayerState currentState; 
 
     private void Awake()
     {
@@ -32,17 +33,15 @@ public class PlayerMovement : MonoBehaviour
         horizontalMove = 0f;
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = regularGravity;
-        grounded = false;
+        SwitchStateTo(PlayerState.FALLING); 
         ResetJumpAmount();
     }
 
     private void Update()
     {
         rb.velocity = new Vector2(horizontalMove * horizontalSpeed, rb.velocity.y);
-        if (rb.velocity.y < 0f)
-            rb.gravityScale = fallGravity;
-        else
-            rb.gravityScale = regularGravity;
+        if (currentState != PlayerState.FALLING && rb.velocity.y < 0f)
+            SwitchStateTo(PlayerState.FALLING); 
     }
 
     private void OnEnable()
@@ -75,16 +74,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnJumpPerformed(InputAction.CallbackContext context)
     {
-        if (grounded || currentJumpAmount > 0)
+        if (currentState == PlayerState.GROUNDED || currentJumpAmount > 0)
         {
             rb.gravityScale = regularGravity;
-            // Prevent falling velocity from reducing jump height
-            if (rb.velocity.y < 0f)
-                rb.velocity = new Vector2(rb.velocity.x, 0f);
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            if (!grounded)
+            if (currentState != PlayerState.GROUNDED)
                 currentJumpAmount--;
-            grounded = false;
+            SwitchStateTo(PlayerState.JUMPING); 
         }
         else
         {
@@ -95,19 +92,41 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnJumpCanceled(InputAction.CallbackContext context)
     {
-        // Variable jump height
-        if (rb.velocity.y > 0f)
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2f);
+        SwitchStateTo(PlayerState.FALLING);  
     }
 
     public void OnTouchingFloor()
     {
+        SwitchStateTo(PlayerState.GROUNDED); 
         ResetJumpAmount(); 
-        grounded = true; 
     }
 
     private void ResetJumpAmount()
     {
         currentJumpAmount = maxExtraJumpAmount;
     }
+    
+    private void SwitchStateTo(PlayerState newState)
+    {
+        if (newState == currentState)
+            return; 
+
+        switch(newState)
+        {
+            case PlayerState.FALLING:
+                rb.gravityScale = fallGravity;
+                break; 
+            default:
+                rb.gravityScale = regularGravity; 
+                break; 
+        }
+        currentState = newState; 
+    }
+}
+
+public enum PlayerState
+{
+    JUMPING,
+    FALLING,
+    GROUNDED
 }

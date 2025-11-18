@@ -6,13 +6,13 @@ public class OxygenMeterUI : MonoBehaviour
     [SerializeField]
     private OxygenData oxygen;
 
+    [SerializeField]
     private TextMeshProUGUI meter;
 
     private void Start()
     {
-        meter = GetComponent<TextMeshProUGUI>();
         UpdateUI(); 
-    }
+    } 
 
     public void UpdateUI()
     {
