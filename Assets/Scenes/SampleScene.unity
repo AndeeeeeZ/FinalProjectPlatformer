@@ -1368,7 +1368,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2654168, y: 0}
+  m_Offset: {x: 0.098873556, y: -0.017531037}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.28866667}
@@ -1379,7 +1379,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7360893, y: 1}
+  m_Size: {x: 1.4030029, y: 2.3674076}
   m_EdgeRadius: 0
 --- !u!50 &683587370
 Rigidbody2D:
@@ -2331,9 +2331,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1625496799}
   - component: {fileID: 1625496800}
-  - component: {fileID: 1625496801}
   - component: {fileID: 1625496803}
   - component: {fileID: 1625496802}
+  - component: {fileID: 1625496801}
   m_Layer: 0
   m_Name: Spare
   m_TagString: Untagged
@@ -2398,7 +2398,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 30
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
+  m_Color: {r: 0.899371, g: 0.0593923, b: 0.0593923, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2421,8 +2421,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLocation: {fileID: 615378076}
-  maxHoldTime: 0
-  maxShootForce: 0
+  maxHoldTime: 2
+  maxShootForce: 10
+  returningSpeed: 5
 --- !u!61 &1625496802
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2481,7 +2482,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
