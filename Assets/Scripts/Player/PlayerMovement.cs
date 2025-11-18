@@ -1,4 +1,5 @@
 using System;
+using System.Security;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private bool debugging;
+
+    [SerializeField]
+    private ParticleSystem particles; 
 
     [SerializeField]
     private float horizontalSpeed, jumpForce;
@@ -113,8 +117,12 @@ public class PlayerMovement : MonoBehaviour
 
         switch(newState)
         {
+            case PlayerState.JUMPING: 
+                particles.Play();
+                break; 
             case PlayerState.FALLING:
                 rb.gravityScale = fallGravity;
+                particles.Stop(); 
                 break; 
             default:
                 rb.gravityScale = regularGravity; 

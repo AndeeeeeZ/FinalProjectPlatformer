@@ -50,7 +50,7 @@ public class Spare : MonoBehaviour
         if (currentState == SpareState.AIMING)
             timer += Time.deltaTime;
 
-        if (currentState == SpareState.SHOOTING && rb.velocity.magnitude < 0.1f)
+        if (currentState == SpareState.SHOOTING && rb.velocity.magnitude < 0.2f)
             SwitchStateTo(SpareState.RETURNING);
 
         switch (currentState)
@@ -72,7 +72,7 @@ public class Spare : MonoBehaviour
     {
         if (currentState == SpareState.RETURNING)
         {
-            if ((transform.position - targetLocation.position).magnitude < 0.1f)
+            if ((transform.position - targetLocation.position).magnitude < 0.3f)
             {
                 SwitchStateTo(SpareState.HOLDING);
                 return;
@@ -122,13 +122,16 @@ public class Spare : MonoBehaviour
         if (currentState == SpareState.HOLDING)
             SwitchStateTo(SpareState.AIMING);
         else
-            Debug.LogWarning("Can't cast spare again until it gets back in hand"); 
+            Debug.LogWarning("Can't cast spare again until it gets back in hand");
     }
 
     private void OnHoldCanceled(InputAction.CallbackContext context)
     {
-        SwitchStateTo(SpareState.SHOOTING);
-        ShootSpare();
+        if (currentState == SpareState.AIMING)
+        {
+            SwitchStateTo(SpareState.SHOOTING);
+            ShootSpare();
+        }
     }
 
     private void SwitchStateTo(SpareState newState)
@@ -154,7 +157,12 @@ public class Spare : MonoBehaviour
             Debug.LogWarning("Hold time too short");
             return;
         }
-        rb.AddForce(maxShootForce * transform.up, ForceMode2D.Impulse);
+        rb.AddForce(Mathf.Clamp(GetCurrentHoldPercentage(), 0.3f, 1f) * maxShootForce * transform.up, ForceMode2D.Impulse);
+    }
+
+    private float GetCurrentHoldPercentage()
+    {
+        return Mathf.Clamp01(timer / maxHoldTime); 
     }
 }
 
