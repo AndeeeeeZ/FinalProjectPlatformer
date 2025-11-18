@@ -1,8 +1,7 @@
 using UnityEngine;
 public class Fish : MonoBehaviour
 {
-    [SerializeField]
-    private FishData fishData;
+    public FishData fishData;
 
     [SerializeField]
     private LayerMask floorLayer;
@@ -103,5 +102,10 @@ public class Fish : MonoBehaviour
     private void GetRandomMoveDirection()
     {
         targetDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+    }
+
+    public void Die()
+    {
+        gameObject.SetActive(false); 
     }
 }
