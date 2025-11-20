@@ -1,0 +1,22 @@
+WASD or Arrow key to move
+Space to jump
+Use mouse to aim and click left mouse button to shoot
+
+Note setting of the game is underwater so the floaty control is intentional
+I haven't had that much time to spend on the game so the game is mostly unfinished
+
+Feedback:
+-------------------------------
+spear is going off the game boundary. 
+
+sometimes the player can jump more than once in the air. i think this has to do with colliding with a platform against the players side.
+
+The spear returns a little slowly
+
+You definitely need a couple more levels, and like, a small tutorial for what your supposed to be doing but its a very cool idea! 
+
+A recommendation I have is to keep on having fish spawn in or cut to another stage in rapid fire to give that arcade feel I think you're going for. Good stuff 
+
+If its intentional cool, you can walk into enemies with the spear and they die. Cool art and mechanics. I really like the jump and spear launching.
+
+It would be cool if you made its so the longer you hold on the mouse button, the longer it shoots. I like the jump mechanic alot as well because it feels like you're swimming. Having the spear not come back to the player would add a layer of difficulty to the game.
