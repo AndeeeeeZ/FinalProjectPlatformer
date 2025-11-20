@@ -1,8 +1,7 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Spare : MonoBehaviour
+public class Spear : MonoBehaviour
 {
     [SerializeField]
     private Transform targetLocation;
@@ -16,7 +15,7 @@ public class Spare : MonoBehaviour
     private PlatformerActions input;
     private Rigidbody2D rb;
 
-    private SpareState currentState;
+    private SpearState currentState;
     private float timer;
 
     private void Awake()
@@ -27,7 +26,7 @@ public class Spare : MonoBehaviour
 
     private void Start()
     {
-        currentState = SpareState.HOLDING;
+        currentState = SpearState.HOLDING;
         timer = 0f;
     }
 
@@ -47,22 +46,22 @@ public class Spare : MonoBehaviour
 
     private void Update()
     {
-        if (currentState == SpareState.AIMING)
+        if (currentState == SpearState.AIMING)
             timer += Time.deltaTime;
 
-        if (currentState == SpareState.SHOOTING && rb.velocity.magnitude < 0.2f)
-            SwitchStateTo(SpareState.RETURNING);
+        if (currentState == SpearState.SHOOTING && rb.velocity.magnitude < 0.2f)
+            SwitchStateTo(SpearState.RETURNING);
 
         switch (currentState)
         {
-            case SpareState.AIMING:
+            case SpearState.AIMING:
                 timer += Time.deltaTime;
                 break;
 
-            case SpareState.SHOOTING:
+            case SpearState.SHOOTING:
                 if (rb.velocity.magnitude < 0.1f)
                 {
-                    SwitchStateTo(SpareState.RETURNING);
+                    SwitchStateTo(SpearState.RETURNING);
                 }
                 break;
         }
@@ -70,11 +69,11 @@ public class Spare : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (currentState == SpareState.RETURNING)
+        if (currentState == SpearState.RETURNING)
         {
             if ((transform.position - targetLocation.position).magnitude < 0.3f)
             {
-                SwitchStateTo(SpareState.HOLDING);
+                SwitchStateTo(SpearState.HOLDING);
                 return;
             }
             AlignEndWithTargetPosition();
@@ -84,7 +83,7 @@ public class Spare : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (currentState == SpareState.HOLDING || currentState == SpareState.AIMING)
+        if (currentState == SpearState.HOLDING || currentState == SpearState.AIMING)
         {
             AlignWithMouse();
             MoveToHoldPosition();
@@ -119,29 +118,29 @@ public class Spare : MonoBehaviour
 
     private void OnHoldPerformed(InputAction.CallbackContext context)
     {
-        if (currentState == SpareState.HOLDING)
-            SwitchStateTo(SpareState.AIMING);
+        if (currentState == SpearState.HOLDING)
+            SwitchStateTo(SpearState.AIMING);
         else
-            Debug.LogWarning("Can't cast spare again until it gets back in hand");
+            Debug.LogWarning("Can't cast Spear again until it gets back in hand");
     }
 
     private void OnHoldCanceled(InputAction.CallbackContext context)
     {
-        if (currentState == SpareState.AIMING)
+        if (currentState == SpearState.AIMING)
         {
-            SwitchStateTo(SpareState.SHOOTING);
-            ShootSpare();
+            SwitchStateTo(SpearState.SHOOTING);
+            ShootSpear();
         }
     }
 
-    private void SwitchStateTo(SpareState newState)
+    private void SwitchStateTo(SpearState newState)
     {
         if (newState == currentState)
             return;
 
         switch (newState)
         {
-            case SpareState.AIMING:
+            case SpearState.AIMING:
                 timer = 0f;
                 break;
         }
@@ -149,11 +148,11 @@ public class Spare : MonoBehaviour
         currentState = newState;
     }
 
-    private void ShootSpare()
+    private void ShootSpear()
     {
         if (timer < 0.1f)
         {
-            SwitchStateTo(SpareState.HOLDING);
+            SwitchStateTo(SpearState.HOLDING);
             Debug.LogWarning("Hold time too short");
             return;
         }
@@ -182,7 +181,7 @@ public class Spare : MonoBehaviour
     }
 }
 
-public enum SpareState
+public enum SpearState
 {
     HOLDING,
     AIMING,

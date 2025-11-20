@@ -6235,7 +6235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 615378076}
   m_Layer: 0
-  m_Name: SparePosition
+  m_Name: SpearPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7579,7 +7579,7 @@ GameObject:
   - component: {fileID: 1625496802}
   - component: {fileID: 1625496801}
   m_Layer: 0
-  m_Name: Spare
+  m_Name: Spear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7861,8 +7861,8 @@ MonoBehaviour:
   particles: {fileID: 242846499}
   horizontalSpeed: 7
   jumpForce: 8
-  regularGravity: 1
-  fallGravity: 3
+  regularGravity: 0.5
+  fallGravity: 2.5
   maxExtraJumpAmount: 1
 --- !u!50 &1724643300
 Rigidbody2D:
