@@ -157,12 +157,28 @@ public class Spare : MonoBehaviour
             Debug.LogWarning("Hold time too short");
             return;
         }
-        rb.AddForce(Mathf.Clamp(GetCurrentHoldPercentage(), 0.3f, 1f) * maxShootForce * transform.up, ForceMode2D.Impulse);
+        // Mathf.Clamp(GetCurrentHoldPercentage(), 0.3f, 1f) *
+        rb.AddForce(maxShootForce * transform.up, ForceMode2D.Impulse);
     }
 
     private float GetCurrentHoldPercentage()
     {
         return Mathf.Clamp01(timer / maxHoldTime); 
+    }
+
+    private void DecreaseSpeed()
+    {
+        rb.velocity *= 0.8f; 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Fish fish = collision.gameObject.GetComponent<Fish>(); 
+        if (fish != null)
+        {
+            DecreaseSpeed();
+            fish.Die(); 
+        }
     }
 }
 
