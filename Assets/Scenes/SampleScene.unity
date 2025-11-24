@@ -623,8 +623,8 @@ GameObject:
   - component: {fileID: 208703943}
   - component: {fileID: 208703945}
   - component: {fileID: 208703944}
+  - component: {fileID: 208703948}
   - component: {fileID: 208703947}
-  - component: {fileID: 208703946}
   m_Layer: 5
   m_Name: Oxygen Meter
   m_TagString: Untagged
@@ -748,7 +748,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 208703942}
   m_CullTransparentMesh: 1
---- !u!114 &208703946
+--- !u!114 &208703947
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -757,7 +757,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 208703942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19cf3e962feecd04f967535e7a9d9352, type: 3}
+  m_Script: {fileID: 11500000, guid: 7aaf236b5016ad64198cf3e59c7dbab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oxygen: {fileID: 11400000, guid: 9aeefd7db9971a1428a328eea0291089, type: 2}
+  meter: {fileID: 208703944}
+--- !u!114 &208703948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208703942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b208e88db962c47a3439c03c87c668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: 9f63664c437630642aebb9acfd700c66, type: 2}
@@ -776,20 +790,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &208703947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 208703942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aaf236b5016ad64198cf3e59c7dbab6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  oxygen: {fileID: 11400000, guid: 9aeefd7db9971a1428a328eea0291089, type: 2}
-  meter: {fileID: 208703944}
 --- !u!1 &217749654
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,7 +1038,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242846496}
   serializedVersion: 8
-  lengthInSec: 0.7
+  lengthInSec: 0.4
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0

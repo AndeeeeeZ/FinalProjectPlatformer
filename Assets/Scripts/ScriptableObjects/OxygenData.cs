@@ -1,11 +1,12 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu]
 public class OxygenData : ScriptableObject
 {
-    public GameEvent OnLowOxygenLevel;
-    public GameEvent OnNoMoreOxygen;
-    public GameEvent OnOxygenLevelChange;
+    public VoidEvent OnLowOxygenLevel;
+    public VoidEvent OnNoMoreOxygen;
+    public VoidEvent OnOxygenLevelChange;
     public float maxOxygenLevel;
     public float currentOxygenLevel;
     public float lowOxygenLevel;
