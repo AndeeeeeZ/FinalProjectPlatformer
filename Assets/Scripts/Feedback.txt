@@ -5,7 +5,7 @@ Use mouse to aim and click left mouse button to shoot
 Note setting of the game is underwater so the floaty control is intentional
 I haven't had that much time to spend on the game so the game is mostly unfinished
 
-Feedback:
+Feedback: 
 -------------------------------
 spear is going off the game boundary. 
 

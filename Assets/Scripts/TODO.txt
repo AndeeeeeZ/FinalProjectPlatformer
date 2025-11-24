@@ -1,6 +1,17 @@
-Goals: 
-- fish objects
-- AI that can be switched with enum or scriptable objects
-    - ex doesn't do anything when player get near
-    - attacks player
-    - runs from player
+TODO:
+
+- MECHANICS
+    - inventory
+    - fish spawner
+    - procedural generated map
+    - title scene
+    - start scene
+    - end scene
+    
+
+- ART
+    - better oxygen bar UI
+    - character animation
+    - tile map
+    - parallax background 
+    - scene transition
