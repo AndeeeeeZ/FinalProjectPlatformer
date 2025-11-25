@@ -4,9 +4,12 @@ using UnityEngine.InputSystem;
 public class Spear : MonoBehaviour
 {
     [SerializeField]
+    private FishDataEvent OnFishKilled; 
+
+    [SerializeField]
     private Transform targetLocation;
     [SerializeField]
-    private float maxHoldTime;
+    private float maxHoldTime; 
     [SerializeField]
     private float maxShootForce;
     [SerializeField]
@@ -90,6 +93,17 @@ public class Spear : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Fish fish = collision.gameObject.GetComponent<Fish>(); 
+        if (fish != null)
+        {
+            DecreaseSpeed();
+            OnFishKilled.Raise(fish.fishData); 
+            fish.Die(); 
+        }
+    }
+
     private void AlignWithMouse()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -168,16 +182,6 @@ public class Spear : MonoBehaviour
     private void DecreaseSpeed()
     {
         rb.velocity *= 0.8f; 
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Fish fish = collision.gameObject.GetComponent<Fish>(); 
-        if (fish != null)
-        {
-            DecreaseSpeed();
-            fish.Die(); 
-        }
     }
 }
 

@@ -5,7 +5,26 @@ using UnityEngine;
 [CreateAssetMenu]
 public class FishingInventory : ScriptableObject
 {
+    public VoidEvent OnFishingInventoryChange;
     public Dictionary<FishData, int> allFish;
+
+    private void OnEnable()
+    {
+        // NOTE THIS WILL CAUSE THE INVENTORY TO RESET EACH TIME
+        allFish = new Dictionary<FishData, int>();
+    }
+    public void AddFish(FishData fish)
+    {
+        if (allFish.ContainsKey(fish))
+        {
+            allFish[fish]++;
+        }
+        else
+        {
+            allFish[fish] = 1;
+        }
+        OnFishingInventoryChange.Raise();
+    }
 
     public float GetInventoryValue()
     {
@@ -17,7 +36,7 @@ public class FishingInventory : ScriptableObject
         return sum;
     }
 
-    public string GetAllFish()
+    public string GetAllFishString()
     {
         StringBuilder stringBuilder = new StringBuilder();
         foreach (KeyValuePair<FishData, int> fish in allFish)
