@@ -15,3 +15,8 @@ MonoBehaviour:
   idleSwims: 1
   timePerDirectionChange: 4
   detectionDistance: 2
+  moveSpeed: 2
+  directionChangeSpeed: 2
+  horizontalFlipSpeed: 2
+  verticalRotationSpeed: 2
+  maxVerticalAngle: 30

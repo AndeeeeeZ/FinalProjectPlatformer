@@ -153,7 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce0f7b5cd1583694b8c50fd96779d656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugging: 0
   fishData: {fileID: 11400000, guid: b5243feb9c429ce4c89819b266f11d52, type: 2}
+  behavior: {fileID: 11400000, guid: b657f57b7134bb94fad0ff5b974bfaee, type: 2}
   floorLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -6532,7 +6534,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce0f7b5cd1583694b8c50fd96779d656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugging: 0
   fishData: {fileID: 11400000, guid: b5243feb9c429ce4c89819b266f11d52, type: 2}
+  behavior: {fileID: 11400000, guid: b657f57b7134bb94fad0ff5b974bfaee, type: 2}
   floorLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -7305,7 +7309,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce0f7b5cd1583694b8c50fd96779d656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugging: 0
   fishData: {fileID: 11400000, guid: b5243feb9c429ce4c89819b266f11d52, type: 2}
+  behavior: {fileID: 11400000, guid: b657f57b7134bb94fad0ff5b974bfaee, type: 2}
   floorLayer:
     serializedVersion: 2
     m_Bits: 64

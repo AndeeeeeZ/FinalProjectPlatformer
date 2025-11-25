@@ -1,19 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField]
-    private OxygenData oxygenTank;
+    [SerializeField] private OxygenData oxygenTank;
 
     private void Start()
     {
-        ResetOxygenLevel(); 
+        ResetOxygenLevel();
     }
 
     private void ResetOxygenLevel()
     {
-        oxygenTank.ResetOxygenLevelToMax(); 
+        oxygenTank.ResetOxygenLevelToMax();
     }
 }

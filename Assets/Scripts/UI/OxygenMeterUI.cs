@@ -3,16 +3,14 @@ using UnityEngine;
 
 public class OxygenMeterUI : MonoBehaviour
 {
-    [SerializeField]
-    private OxygenData oxygen;
+    [SerializeField] private OxygenData oxygen;
 
-    [SerializeField]
-    private TextMeshProUGUI meter;
+    [SerializeField] private TextMeshProUGUI meter;
 
     private void Start()
     {
-        UpdateUI(); 
-    } 
+        UpdateUI();
+    }
 
     public void UpdateUI()
     {

@@ -9,17 +9,15 @@ public class FloorDetection : MonoBehaviour
 {
     public UnityEvent OnTouchingFloor;
 
-    [SerializeField]
-    private bool debugging;
-    [SerializeField]
-    private string floorTag;
+    [SerializeField] private bool debugging;
+    [SerializeField] private string floorTag;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(floorTag))
         {
             if (debugging)
-                Debug.Log("Floor detection collides with floor"); 
+                Debug.Log("Floor detection collides with floor");
             OnTouchingFloor?.Invoke();
         }
     }

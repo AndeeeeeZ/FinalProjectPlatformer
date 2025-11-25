@@ -3,21 +3,13 @@ using UnityEngine.InputSystem;
 
 public class Spear : MonoBehaviour
 {
-    [SerializeField]
-    private FishDataEvent OnFishKilled; 
-
-    [SerializeField]
-    private Transform targetLocation;
-    [SerializeField]
-    private float maxHoldTime; 
-    [SerializeField]
-    private float maxShootForce;
-    [SerializeField]
-    private float returningSpeed;
-
+    [SerializeField] private FishDataEvent OnFishKilled;
+    [SerializeField] private Transform targetLocation;
+    [SerializeField] private float maxHoldTime;
+    [SerializeField] private float maxShootForce;
+    [SerializeField] private float returningSpeed;
     private PlatformerActions input;
     private Rigidbody2D rb;
-
     private SpearState currentState;
     private float timer;
 
@@ -95,12 +87,12 @@ public class Spear : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Fish fish = collision.gameObject.GetComponent<Fish>(); 
+        Fish fish = collision.gameObject.GetComponent<Fish>();
         if (fish != null)
         {
             DecreaseSpeed();
-            OnFishKilled.Raise(fish.fishData); 
-            fish.Die(); 
+            OnFishKilled.Raise(fish.fishData);
+            fish.Die();
         }
     }
 
@@ -176,12 +168,12 @@ public class Spear : MonoBehaviour
 
     private float GetCurrentHoldPercentage()
     {
-        return Mathf.Clamp01(timer / maxHoldTime); 
+        return Mathf.Clamp01(timer / maxHoldTime);
     }
 
     private void DecreaseSpeed()
     {
-        rb.velocity *= 0.8f; 
+        rb.velocity *= 0.8f;
     }
 }
 

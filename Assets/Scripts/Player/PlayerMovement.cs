@@ -1,31 +1,23 @@
-using System;
-using System.Security;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private bool debugging;
+    [SerializeField] private bool debugging;
 
-    [SerializeField]
-    private ParticleSystem particles; 
+    [SerializeField] private ParticleSystem particles;
 
-    [SerializeField]
-    private float horizontalSpeed, jumpForce;
+    [SerializeField] private float horizontalSpeed, jumpForce;
 
-    [SerializeField]
-    private float regularGravity, fallGravity;
+    [SerializeField] private float regularGravity, fallGravity;
 
-    [SerializeField, Min(0)]
-    private int maxExtraJumpAmount;
-
+    [SerializeField, Min(0)] private int maxExtraJumpAmount;
 
     private PlatformerActions input;
     private Rigidbody2D rb;
     private float horizontalMove;
     private int currentJumpAmount;
-    private PlayerState currentState; 
+    private PlayerState currentState;
 
     private void Awake()
     {
@@ -37,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
         horizontalMove = 0f;
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = regularGravity;
-        SwitchStateTo(PlayerState.FALLING); 
+        SwitchStateTo(PlayerState.FALLING);
         ResetJumpAmount();
     }
 
@@ -45,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector2(horizontalMove * horizontalSpeed, rb.velocity.y);
         if (currentState != PlayerState.FALLING && rb.velocity.y < 0f)
-            SwitchStateTo(PlayerState.FALLING); 
+            SwitchStateTo(PlayerState.FALLING);
     }
 
     private void OnEnable()
@@ -85,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             if (currentState != PlayerState.GROUNDED)
                 currentJumpAmount--;
-            SwitchStateTo(PlayerState.JUMPING); 
+            SwitchStateTo(PlayerState.JUMPING);
         }
         else
         {
@@ -96,39 +88,39 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnJumpCanceled(InputAction.CallbackContext context)
     {
-        SwitchStateTo(PlayerState.FALLING);  
+        SwitchStateTo(PlayerState.FALLING);
     }
 
     public void OnTouchingFloor()
     {
-        SwitchStateTo(PlayerState.GROUNDED); 
-        ResetJumpAmount(); 
+        SwitchStateTo(PlayerState.GROUNDED);
+        ResetJumpAmount();
     }
 
     private void ResetJumpAmount()
     {
         currentJumpAmount = maxExtraJumpAmount;
     }
-    
+
     private void SwitchStateTo(PlayerState newState)
     {
         if (newState == currentState)
-            return; 
+            return;
 
-        switch(newState)
+        switch (newState)
         {
-            case PlayerState.JUMPING: 
+            case PlayerState.JUMPING:
                 particles.Play();
-                break; 
+                break;
             case PlayerState.FALLING:
                 rb.gravityScale = fallGravity;
-                particles.Stop(); 
-                break; 
+                particles.Stop();
+                break;
             default:
-                rb.gravityScale = regularGravity; 
-                break; 
+                rb.gravityScale = regularGravity;
+                break;
         }
-        currentState = newState; 
+        currentState = newState;
     }
 }
 
