@@ -10,8 +10,7 @@ public class Rope : MonoBehaviour
 
     private LineRenderer lineRenderer;
     private bool isRopeActive;
-    private float waveTime; 
-    private bool enableWave;
+    private float waveTime;
 
     void Awake()
     {
@@ -22,7 +21,6 @@ public class Rope : MonoBehaviour
     {
         isRopeActive = false;
         waveTime = 0f;
-        //enableWave = false; 
     }
 
     void SetupLineRenderer()
@@ -40,11 +38,6 @@ public class Rope : MonoBehaviour
         if (isRopeActive)
         {
             waveTime += Time.deltaTime * waveSpeed;
-            enableWave = true; 
-            if (enableWave)
-            {
-                
-            }
             UpdateRopeVisual();
         }
     }
@@ -66,15 +59,12 @@ public class Rope : MonoBehaviour
         {
             float t = i / (float)(segmentCount - 1);
 
-            // Base position along the line
             Vector3 position = Vector3.Lerp(startPos, endPos, t);
 
             // Add wave animation
-            if (enableWave)
-            {
-                float wave = Mathf.Sin(waveTime + t * Mathf.PI * 2f) * waveAmplitude;
-                position += perpendicular * wave * (1f - Mathf.Abs(t - 0.5f) * 2f); // Wave stronger in middle
-            }
+            float wave = Mathf.Sin(waveTime + t * Mathf.PI * 2f) * waveAmplitude;
+            position += perpendicular * wave * (1f - Mathf.Abs(t - 0.5f) * 2f); // Wave stronger in middle
+
 
             lineRenderer.SetPosition(i, position);
         }
@@ -90,18 +80,5 @@ public class Rope : MonoBehaviour
     {
         isRopeActive = false;
         lineRenderer.enabled = false;
-        DisableWave(); 
     }
-
-    public void DisableWave()
-    {
-        enableWave = false; 
-    }
-
-    public void EnableWave()
-    {
-        enableWave = true; 
-        waveTime = 0f; 
-    }
-
 }

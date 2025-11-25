@@ -153,9 +153,6 @@ public class Spear : MonoBehaviour
             case SpearState.HOLDING:
                 rope.HideRope(); 
                 break; 
-            case SpearState.RETURNING: 
-                //rope.EnableWave(); 
-                break; 
         }
 
         currentState = newState;
