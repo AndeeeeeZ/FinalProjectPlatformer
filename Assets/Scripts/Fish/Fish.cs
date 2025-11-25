@@ -6,6 +6,7 @@ public class Fish : MonoBehaviour
     public FishData fishData;
     public FishBehavior behavior;
     [SerializeField] private LayerMask floorLayer;
+    [SerializeField] private SpriteRenderer sr; 
 
     // Private fields
     private Rigidbody2D rb;
@@ -16,6 +17,11 @@ public class Fish : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        if (sr != null)
+        {
+            sr.sprite = fishData.fishSprite; 
+        }
     }
 
     private void Start()

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7df09e84f3dca304390b4e09f8558272, type: 3}
-  m_Name: Sample fish Behavior
+  m_Name: Random Swimmer
   m_EditorClassIdentifier: 
   idleSwims: 1
   timePerDirectionChange: 4
