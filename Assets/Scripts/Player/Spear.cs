@@ -5,6 +5,7 @@ public class Spear : MonoBehaviour
 {
     [SerializeField] private FishDataEvent OnFishKilled;
     [SerializeField] private Transform targetLocation;
+    [SerializeField] private Rope rope; 
     [SerializeField] private float maxHoldTime;
     [SerializeField] private float maxShootForce;
     [SerializeField] private float returningSpeed;
@@ -149,6 +150,12 @@ public class Spear : MonoBehaviour
             case SpearState.AIMING:
                 timer = 0f;
                 break;
+            case SpearState.HOLDING:
+                rope.HideRope(); 
+                break; 
+            case SpearState.RETURNING: 
+                //rope.EnableWave(); 
+                break; 
         }
 
         currentState = newState;
@@ -164,6 +171,7 @@ public class Spear : MonoBehaviour
         }
         // Mathf.Clamp(GetCurrentHoldPercentage(), 0.3f, 1f) *
         rb.AddForce(maxShootForce * transform.up, ForceMode2D.Impulse);
+        rope.ShowRope(); 
     }
 
     private float GetCurrentHoldPercentage()
