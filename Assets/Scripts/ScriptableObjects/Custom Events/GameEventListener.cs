@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using System.Collections.Generic;
 public abstract class GameEventListener<T> : MonoBehaviour
 {
     public GameEvent<T> Event;
@@ -19,7 +18,7 @@ public abstract class GameEventListener<T> : MonoBehaviour
             Debug.LogWarning("GameEventListener is missing event");
     }
 
-    private void ODisable()
+    private void OnDisable()
     {
         if (Event != null)
             Event.UnregisterListener(this);

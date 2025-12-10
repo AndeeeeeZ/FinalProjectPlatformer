@@ -6,7 +6,7 @@ public class Fish : MonoBehaviour
     public FishData fishData;
     public FishBehavior behavior;
     [SerializeField] private LayerMask floorLayer;
-    [SerializeField] private SpriteRenderer sr; 
+    [SerializeField] private SpriteRenderer sr;
 
     // Private fields
     private Rigidbody2D rb;
@@ -17,11 +17,6 @@ public class Fish : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        if (sr != null)
-        {
-            sr.sprite = fishData.fishSprite; 
-        }
     }
 
     private void Start()
@@ -78,8 +73,22 @@ public class Fish : MonoBehaviour
         return hit.collider != null;
     }
 
-    public void Die()
+    public void SetFishDataAndBehavior(FishData data, FishBehavior b)
     {
-        gameObject.SetActive(false);
+        fishData = data;
+        behavior = b;
+        sr.sprite = fishData.fishSprite;
+
+        if (behavior != null && behavior.idleSwims)
+        {
+            currentDirection = behavior.GetNextDirection(Vector2.zero, 0f);
+            targetDirection = currentDirection;
+            timer = 0f;
+        }
+    }
+
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }

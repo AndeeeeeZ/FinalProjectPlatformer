@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class Spear : MonoBehaviour
 {
     [SerializeField] private FishDataEvent OnFishKilled;
+    [SerializeField] private VoidEvent OnAFishDied; 
     [SerializeField] private Transform targetLocation;
     [SerializeField] private Rope rope; 
     [SerializeField] private float maxHoldTime;
@@ -93,7 +94,8 @@ public class Spear : MonoBehaviour
         {
             DecreaseSpeed();
             OnFishKilled.Raise(fish.fishData);
-            fish.Die();
+            OnAFishDied.Raise(); 
+            fish.DestroySelf(); 
         }
     }
 
@@ -178,7 +180,7 @@ public class Spear : MonoBehaviour
 
     private void DecreaseSpeed()
     {
-        rb.velocity *= 0.8f;
+        rb.velocity *= 0.5f;
     }
 }
 
