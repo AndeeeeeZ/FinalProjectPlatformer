@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float regularGravity, fallGravity;
 
     [SerializeField, Min(0)] private int maxExtraJumpAmount;
+    [SerializeField] private Animator animator;
 
     private PlatformerActions input;
     private Rigidbody2D rb;
@@ -36,8 +37,10 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         rb.velocity = new Vector2(horizontalMove * horizontalSpeed, rb.velocity.y);
-        if (currentState != PlayerState.FALLING && rb.velocity.y < 0f)
+
+        if (currentState == PlayerState.JUMPING && rb.velocity.y < -0.01f)
             SwitchStateTo(PlayerState.FALLING);
+        Debug.Log(currentState); 
     }
 
     private void OnEnable()
@@ -61,11 +64,13 @@ public class PlayerMovement : MonoBehaviour
     private void OnMovePerformed(InputAction.CallbackContext context)
     {
         horizontalMove = context.ReadValue<float>();
+        animator.SetFloat("Walk", horizontalMove); 
     }
 
     private void OnMoveCanceled(InputAction.CallbackContext context)
     {
         horizontalMove = 0f;
+        animator.SetFloat("Walk", horizontalMove); 
     }
 
     private void OnJumpPerformed(InputAction.CallbackContext context)
@@ -88,13 +93,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnJumpCanceled(InputAction.CallbackContext context)
     {
-        SwitchStateTo(PlayerState.FALLING);
+        if (currentState == PlayerState.JUMPING)
+            SwitchStateTo(PlayerState.FALLING);
     }
 
     public void OnTouchingFloor()
     {
-        SwitchStateTo(PlayerState.GROUNDED);
-        ResetJumpAmount();
+        if (currentState != PlayerState.GROUNDED)
+        {
+            SwitchStateTo(PlayerState.GROUNDED);
+            ResetJumpAmount();
+        }
     }
 
     private void ResetJumpAmount()
@@ -111,13 +120,16 @@ public class PlayerMovement : MonoBehaviour
         {
             case PlayerState.JUMPING:
                 particles.Play();
+                animator.SetTrigger("Jumping");
                 break;
             case PlayerState.FALLING:
                 rb.gravityScale = fallGravity;
                 particles.Stop();
+                animator.SetTrigger("Falling");
                 break;
-            default:
+            case PlayerState.GROUNDED:
                 rb.gravityScale = regularGravity;
+                animator.SetTrigger("Grounded"); 
                 break;
         }
         currentState = newState;

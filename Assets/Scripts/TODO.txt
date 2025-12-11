@@ -1,17 +1,10 @@
 TODO:
 
-- MECHANICS
-    - inventory
-    - fish spawner
+- MECHANIC
     - procedural generated map
-    - title scene
-    - start scene
-    - end scene
     
-
 - ART
     - better oxygen bar UI
     - character animation
     - tile map
     - parallax background 
-    - scene transition

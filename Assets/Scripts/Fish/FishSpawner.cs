@@ -44,16 +44,16 @@ public class FishSpawner : MonoBehaviour
 
     public void SpawnFish()
     {
-        currentFishAmount++; 
+        currentFishAmount++;
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
         int fishDataIndex = Random.Range(0, fishData.Length);
-        int fishBehaviorIndex = Random.Range(0, fishBehaviors.Length);
+        int fishBehaviorIndex = Random.Range(0, fishBehaviors.Length); 
 
         GameObject fish = Instantiate(fishPrefab,
                                         spawnPoints[spawnPointIndex].position,
                                         Quaternion.identity,
                                         fishParent);
-        fish.GetComponent<Fish>().SetFishDataAndBehavior(fishData[fishDataIndex], fishBehaviors[fishBehaviorIndex]);
+        fish.GetComponent<Fish>().SetFishDataAndBehavior(fishData[fishDataIndex], fishBehaviors[fishBehaviorIndex]); 
     }
 
     public void OnFishKilled()

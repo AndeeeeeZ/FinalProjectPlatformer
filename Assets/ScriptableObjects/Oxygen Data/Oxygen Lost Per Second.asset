@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e4894e17641a640a41e76345d4f38c, type: 3}
   m_Name: Oxygen Lost Per Second
   m_EditorClassIdentifier: 
-  Value: -20
+  Value: -1

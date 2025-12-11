@@ -17,6 +17,7 @@ public class Fish : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        timer = 0f;
     }
 
     private void Start()
@@ -31,6 +32,9 @@ public class Fish : MonoBehaviour
     private void FixedUpdate()
     {
         if (behavior == null || !behavior.idleSwims)
+            return;
+
+        if (currentDirection == Vector2.zero)
             return;
 
         timer += Time.fixedDeltaTime;

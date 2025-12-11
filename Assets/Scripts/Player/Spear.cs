@@ -107,7 +107,7 @@ public class Spear : MonoBehaviour
         Vector3 direction = mousePosition - transform.position;
         float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
 
-        transform.rotation = Quaternion.Euler(0f, 0f, targetAngle);
+        transform.localRotation = Quaternion.Euler(0f, 0f, targetAngle);
     }
 
     private void AlignEndWithTargetPosition()

@@ -25,9 +25,11 @@ public class FishBehavior : ScriptableObject
 
     public virtual Vector2 CalculateMovement(Vector2 position, Vector2 currentDirection, Vector2 targetDirection, float deltaTime)
     {
+        // Vector2 smoothDirection = Vector2.Lerp(currentDirection, targetDirection, directionChangeSpeed * deltaTime);
+        // Vector2 targetPosition = position + smoothDirection * 100f;
+        // return Vector2.MoveTowards(position, targetPosition, moveSpeed * deltaTime);
         Vector2 smoothDirection = Vector2.Lerp(currentDirection, targetDirection, directionChangeSpeed * deltaTime);
-        Vector2 targetPosition = position + smoothDirection * 100f;
-        return Vector2.MoveTowards(position, targetPosition, moveSpeed * deltaTime);
+        return position + smoothDirection * moveSpeed * deltaTime;
     }
 
     public virtual float CalculateYRotation(Vector2 currentDirection, float currentYRotation, float deltaTime)

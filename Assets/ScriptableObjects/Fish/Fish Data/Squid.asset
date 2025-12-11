@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Squid
   m_EditorClassIdentifier: 
   fishName: Squid
-  fishSprite: {fileID: 51722083, guid: c5936393c1186a542a6964e4bb309187, type: 3}
+  fishSprite: {fileID: -1832066530, guid: f9bdb93b8df74c345b25a011c582737b, type: 3}
   value: 10

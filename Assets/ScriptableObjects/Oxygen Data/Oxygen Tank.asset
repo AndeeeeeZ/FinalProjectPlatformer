@@ -15,6 +15,6 @@ MonoBehaviour:
   OnLowOxygenLevel: {fileID: 11400000, guid: 7aea6028ca05d7d4d83ca2564ce7f06c, type: 2}
   OnNoMoreOxygen: {fileID: 11400000, guid: c446e9a3e4547b94b8ca699ff6d3653f, type: 2}
   OnOxygenLevelChange: {fileID: 11400000, guid: 9f63664c437630642aebb9acfd700c66, type: 2}
-  maxOxygenLevel: 100
-  currentOxygenLevel: 78
+  maxOxygenLevel: 60
+  currentOxygenLevel: 0
   lowOxygenLevel: 20

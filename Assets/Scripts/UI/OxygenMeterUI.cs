@@ -14,6 +14,6 @@ public class OxygenMeterUI : MonoBehaviour
 
     public void UpdateUI()
     {
-        meter.text = oxygen.currentOxygenLevel + "/" + oxygen.maxOxygenLevel;
+        meter.text = "O2 level: " + oxygen.currentOxygenLevel + "/" + oxygen.maxOxygenLevel;
     }
 }
